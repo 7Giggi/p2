@@ -34,7 +34,7 @@
 				<tr>
 					<th>Nome</th>
 					<th>Piattaforma</th>
-					<th>Quantità</th>
+					<th>Quantita</th>
 					<th>Azione</th>
 				</tr>
 			<% Iterator<?> it = products.iterator();

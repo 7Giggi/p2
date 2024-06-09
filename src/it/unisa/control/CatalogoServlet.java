@@ -31,16 +31,16 @@ public class CatalogoServlet extends HttpServlet {
 		try {
 			if(action!=null) {
 				if(action.equalsIgnoreCase("add")) {
-					bean.setNome(request.getParameter("nome"));
-					bean.setDescrizione(request.getParameter("descrizione"));
-					bean.setIva(request.getParameter("iva"));
+					bean.setNome(sanitizer.sanitize(request.getParameter("nome")));
+					bean.setDescrizione(sanitizer.sanitize(request.getParameter("descrizione")));
+					bean.setIva(sanitizer.sanitize(request.getParameter("iva")));
 					bean.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-					bean.setQuantita(Integer.parseInt(request.getParameter("quantit�")));
-					bean.setPiattaforma(request.getParameter("piattaforma"));
-					bean.setGenere(request.getParameter("genere"));
-					bean.setImmagine(request.getParameter("img"));
-					bean.setDataUscita(request.getParameter("dataUscita"));
-					bean.setDescrizioneDettagliata(request.getParameter("descDett"));
+					bean.setQuantita(Integer.parseInt(request.getParameter("quantita")));
+					bean.setPiattaforma(sanitizer.sanitize(request.getParameter("piattaforma")));
+					bean.setGenere(sanitizer.sanitize(request.getParameter("genere")));
+					bean.setImmagine(sanitizer.sanitize(request.getParameter("img")));
+					bean.setDataUscita(sanitizer.sanitize(request.getParameter("dataUscita")));
+					bean.setDescrizioneDettagliata(sanitizer.sanitize(request.getParameter("descDett")));
 					bean.setInVendita(true);
 					prodDao.doSave(bean);
 				}
@@ -48,16 +48,16 @@ public class CatalogoServlet extends HttpServlet {
 				else if(action.equalsIgnoreCase("modifica")) {
 					
 					bean.setIdProdotto(Integer.parseInt(request.getParameter("id")));
-					bean.setNome(request.getParameter("nome"));
-					bean.setDescrizione(request.getParameter("descrizione"));
-					bean.setIva(request.getParameter("iva"));
+					bean.setNome(sanitizer.sanitize(request.getParameter("nome")));
+					bean.setDescrizione(sanitizer.sanitize(request.getParameter("descrizione")));
+					bean.setIva(sanitizer.sanitize(request.getParameter("iva")));
 					bean.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-					bean.setQuantita(Integer.parseInt(request.getParameter("quantit�")));
-					bean.setPiattaforma(request.getParameter("piattaforma"));
-					bean.setGenere(request.getParameter("genere"));
-					bean.setImmagine(request.getParameter("img"));
-					bean.setDataUscita(request.getParameter("dataUscita"));
-					bean.setDescrizioneDettagliata(request.getParameter("descDett"));
+					bean.setQuantita(Integer.parseInt(request.getParameter("quantita")));
+					bean.setPiattaforma(sanitizer.sanitize(request.getParameter("piattaforma")));
+					bean.setGenere(sanitizer.sanitize(request.getParameter("genere")));
+					bean.setImmagine(sanitizer.sanitize(request.getParameter("img")));
+					bean.setDataUscita(sanitizer.sanitize(request.getParameter("dataUscita")));
+					bean.setDescrizioneDettagliata(sanitizer.sanitize(request.getParameter("descDett")));
 					bean.setInVendita(true);
 					prodDao.doUpdate(bean);	
 				}
