@@ -11,12 +11,26 @@ function checkNomeCognome(inputtxt) {
 
 
 function checkEmail(inputtxt) {
-	var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(inputtxt.value.match(email)) 
-		return true;
-	
-	return false;	
+    var emailParts = inputtxt.value.split('@');
+    if (emailParts.length !== 2)
+        return false; // L'indirizzo email deve contenere esattamente un simbolo '@'
+
+    var localPart = emailParts[0];
+    var domainParts = emailParts[1].split('.');
+    
+    // L'indirizzo email deve avere almeno una parte nel dominio e almeno una parte locale
+    if (domainParts.length < 2 || localPart.length === 0)
+        return false;
+    
+    // Verifica che tutte le parti del dominio siano alfanumeriche
+    for (var i = 0; i < domainParts.length; i++) {
+        if (!/^[a-zA-Z0-9]+$/.test(domainParts[i]))
+            return false;
+    }
+    
+    return true;
 }
+
 
 
 function checkData(inputtxt) {
