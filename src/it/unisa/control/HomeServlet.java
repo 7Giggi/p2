@@ -50,6 +50,10 @@ public class HomeServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		if(redirectedPage.equalsIgnoreCase("META-INF/context.xml")||redirectedPage.equalsIgnoreCase("WEB-INF/web.xml")) {
+			redirectedPage="Errore.jsp";
+		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + redirectedPage);
 		dispatcher.forward(request, response);
 	}

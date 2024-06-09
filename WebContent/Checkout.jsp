@@ -51,8 +51,8 @@
 			<p><input type="text" name="prov" value="<%= spedizione.getProvincia() %>" required/></p>
 		</div>
 		<div class="tableRow">
-			<p>Città:</p>
-			<p><input type="text" name="città" value="<%= spedizione.getCittà() %>" required/></p>
+			<p>Citt:</p>
+			<p><input type="text" name="citt" value="<%= spedizione.getCitta() %>" required/></p>
 		</div>
 		
 		<%}else{ %> 
@@ -85,8 +85,8 @@
 			<p><input type="text" name="prov" required/></p>
 		</div>
 		<div class="tableRow">
-			<p>Città:</p>
-			<p><input type="text" name="città" required/></p>
+			<p>Citt:</p>
+			<p><input type="text" name="citt" required/></p>
 		</div>
 		<%} %>
 	

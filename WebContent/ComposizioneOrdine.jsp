@@ -30,7 +30,7 @@
 		<table class = "ordini">
 		<tr>
 			<th>Prodotto</th>
-			<th>Quantità</th>
+			<th>Quantita</th>
 			<th>Prezzo Unitario</th>
 			<th>Prezzo totale</th>
 			<th>Iva</th>
@@ -49,7 +49,7 @@
 		
 		<tr>
 			<td> <%= nomeP%></td>
-			<td> <%= comp.getQuantità()%></td>
+			<td> <%= comp.getQuantita()%></td>
 			<td> &euro;<%= prezzoUnitario%></td>
 			<td>  &euro;<%= String.format("%.2f",comp.getPrezzoTotale())%></td>
 			<td> <%= comp.getIva()%></td>

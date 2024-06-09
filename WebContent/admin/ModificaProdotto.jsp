@@ -53,8 +53,8 @@
 			<p><input type="text" name="dataUscita" value="<%=bean.getDataUscita() %>" required></p>
 		</div>
 		<div class="tableRow">
-			<p>Quantità:</p>
-			<p><input type="number" name="quantità" value="<%=bean.getQuantità() %>" required></p>
+			<p>Quantita:</p>
+			<p><input type="number" name="quantità" value="<%=bean.getQuantita() %>" required></p>
 		</div>
 		<div class="tableRow">
 			<p>Immagine:</p>
