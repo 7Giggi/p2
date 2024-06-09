@@ -1,6 +1,8 @@
 package it.unisa.control;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -34,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		     UserBean user = new UserBean();
 		     user.setUsername(request.getParameter("un"));
 		     user.setPassword(request.getParameter("pw"));
-		     user = usDao.doRetrieve(request.getParameter("un"),request.getParameter("pw"));
+		     user = usDao.doRetrieve(request.getParameter("un"),hashPassword(request.getParameter("pw")));
 			   		    
 		    
 		     String checkout = request.getParameter("checkout");
@@ -60,4 +62,32 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 		  }
-	}
+	private String hashPassword(String password) {
+        try {
+            // Create an instance of MessageDigest with SHA-256 algorithm
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Get the bytes of the password
+            byte[] passwordBytes = password.getBytes();
+
+            // Update the digest with the password bytes
+            byte[] hashedBytes = digest.digest(passwordBytes);
+
+            // Convert the hashed bytes to a hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashedBytes) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            // Return the hexadecimal string representation of the hashed password
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            // Handle NoSuchAlgorithmException if needed
+            e.printStackTrace();
+            return null;
+        }
+	}}
